@@ -1,0 +1,15 @@
+# ===================================================
+# aggate.list  —  Antigravity 网关(aggate) 专用分流规则集
+# 用途：把 aggate 后端要连的 googleapis 端点锁到 Google 策略组(日本)，
+#       避免被 box 默认规则误分流到狮城/新加坡导致 400
+#       (User location is not supported)。
+# 命中此规则 → Google 策略组（请确保该组选中日本·智能）。
+# 上游端点依据：Antigravity-Manager / gcli2api 的 v1internal 端点。
+# ===================================================
+# Antigravity cloudcode 生成/配额端点（sandbox → daily → prod 三级）
+DOMAIN-SUFFIX,cloudcode-pa.googleapis.com
+DOMAIN-SUFFIX,cloudcode-pa.sandbox.googleapis.com
+DOMAIN-SUFFIX,daily-cloudcode-pa.googleapis.com
+DOMAIN-SUFFIX,daily-cloudcode-pa.sandbox.googleapis.com
+# OAuth token 刷新
+DOMAIN-SUFFIX,oauth2.googleapis.com
